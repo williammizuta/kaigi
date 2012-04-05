@@ -4,6 +4,14 @@
         <title>Hello!</title>
     </head>
     <body>
-        {{ message }}
+        <h1>Hello, Mizuta!</h1>
+        <ul>
+            {% for meeting in meetings %}
+            <li>
+            <h2>{{ meeting.day }}</h2>
+            <p>{{ meeting.minute }}</p>
+            </li>
+            {% end %}
+        </ul>
     </body>
 </html>
