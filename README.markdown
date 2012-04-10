@@ -7,5 +7,6 @@
 * `cat requirements.txt | xargs kaigi-python/bin/pip install`
 
 # Running the server
+* load your virtualenv: `source kaigi-python/bin/activate`
 * type `python <path to your google appengine>/dev_appserver.py <path to your kaigi project>
 * access http://localhost:8080/ in a browser
