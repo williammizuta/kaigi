@@ -20,13 +20,11 @@ class Application(tornado.wsgi.WSGIApplication):
     def __init__(self):
         routes = [
                 (r'/', handlers.index.IndexHandler, dict(meetings=MeetingDAO())),
-                # TODO Put your handlers here
                 ]
         settings = dict(
                 static_path=os.path.join(os.path.dirname(__file__), "static"),
                 template_path=os.path.join(os.path.dirname(__file__), 'templates'),
                 xsrf_cookies=True,
-                # TODO Change this cookie secret
                 cookie_secret="asjidoh91239jasdasdasdasdasdkja8izxc21312sjdhsa/Vo=",
                 )
         tornado.wsgi.WSGIApplication.__init__(self, routes, **settings)
