@@ -1,2 +1,4 @@
 tornado>=2.0
 wtforms
+nose
+nosegae
