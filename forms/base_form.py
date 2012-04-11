@@ -10,6 +10,3 @@ class BaseForm(Form):
       for name in handler.request.arguments.keys():
         formdata.setlist(name, handler.get_arguments(name))
     Form.__init__(self, formdata, obj=obj, prefix=prefix, **kwargs)
-
-
-# TODO Put your form classes here
