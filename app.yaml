@@ -1,6 +1,7 @@
 application: kaigi-tao
 version: 1
-runtime: python
+runtime: python27
+threadsafe: yes
 api_version: 1
 
 handlers:
@@ -8,8 +9,11 @@ handlers:
   static_dir: static
 
 - url: /.*
-  script: app.py
+  script: app.application
 
 builtins:
-- datastore_admin: on
 - appstats: on
+
+libraries:
+- name: django
+  version: latest
