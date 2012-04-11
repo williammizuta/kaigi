@@ -3,6 +3,7 @@ import tornado.wsgi
 import handlers.index
 
 from daos.user_dao import UserDAO
+from daos.kaigi_dao import KaigiDAO
 
 # Constants
 IS_DEV = os.environ['SERVER_SOFTWARE'].startswith('Dev')  # Development server
@@ -15,5 +16,5 @@ settings = dict(
     )
 
 application = tornado.wsgi.WSGIApplication([
-    (r'/', handlers.index.IndexHandler, dict(user_dao=UserDAO())),
+    (r'/', handlers.index.IndexHandler, dict(user_dao=UserDAO(), kaigi_dao=KaigiDAO())),
     ], **settings)
