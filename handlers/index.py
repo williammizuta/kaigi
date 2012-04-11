@@ -11,5 +11,5 @@ class IndexHandler(BaseHandler):
 
     @tornado.web.authenticated
     def get(self):
-        if (user_dao.has_no_user()):
+        if (self.user_dao.has_no_user()):
             self.render('setup.html')
