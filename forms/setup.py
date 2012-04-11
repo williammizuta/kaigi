@@ -1,8 +1,8 @@
-import wtforms as forms
+import wtforms
 from wtforms import validators
 
-from forms.forms import BaseForm
+from forms import BaseForm
 
 class Setup(BaseForm):
-	name = forms.TextField('Name', validators=[validators.required])
-	description = form.TextField('Description')
+    name = wtforms.TextField('Name', validators=[validators.required])
+    description = wtforms.TextField('Description')
