@@ -2,7 +2,7 @@ import os
 import tornado.wsgi
 import handlers.index
 
-from daos.meeting_dao import MeetingDAO
+from daos.user_dao import UserDAO
 
 # Constants
 IS_DEV = os.environ['SERVER_SOFTWARE'].startswith('Dev')  # Development server
@@ -15,5 +15,5 @@ settings = dict(
     )
 
 application = tornado.wsgi.WSGIApplication([
-    (r'/', handlers.index.IndexHandler, dict(meetings=MeetingDAO())),
+    (r'/', handlers.index.IndexHandler, dict(user_dao=UserDAO())),
     ], **settings)
