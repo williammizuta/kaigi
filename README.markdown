@@ -1,12 +1,17 @@
 # Requirements
-* python2.5
+* python2.7
 * python-virtualenv
+* make
 
 # Install
-* type `virtualenv --python=python2.5 --no-site-packages kaigi-python`
+* type `virtualenv --python=python2.7 --no-site-packages kaigi-python`
 * type `cat requirements.txt | xargs kaigi-python/bin/pip install`
 
 # Running the server
 * load your virtualenv: `source kaigi-python/bin/activate`
-* type `python <path to your google appengine>/dev_appserver.py <path to your kaigi project>`
+* type `make`
 * access http://localhost:8080/ in a browser
+
+# Running the tests
+* load your virtualenv: `source kaigi-python/bin/activate`
+* type `make test`
