@@ -12,7 +12,7 @@ class SetupHandler(BaseHandler):
         self.kaigi_dao = kaigi_dao
 
     def go_to_setup_form(self):
-        self.render('setup.html', form=KaigiForm(), xsrf_field=self.xsrf_form_html())
+        self.render('setup.html', form=KaigiForm())
 
     @tornado.web.authenticated
     def get(self):
@@ -23,7 +23,7 @@ class SetupHandler(BaseHandler):
         self.check_xsrf_cookie()
         form = KaigiForm(handler=self)
         if form.validate():
-            kaigi = Kaigi(name=form.name.data, description=form.description.data)
+            kaigi = Kaigi(**form.data)
             self.user_dao.insert_admin(self.get_current_user())
             self.kaigi_dao.insert(kaigi)
             self.redirect('/')

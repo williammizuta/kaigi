@@ -9,11 +9,11 @@
         <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/setup.css") }}">
     </head>
     <body>
-        <h1>Welcome to Kaigi!</h1>
-        <p>Enter some information below about your meeting group to start using Kaigi</p>
+        <h1>{{ _("Welcome to Kaigi!") }}</h1>
+        <p>{{ _("Enter some information below about your meeting group to start using Kaigi") }}</p>
 
         <form action="{{ request.uri }}" method="post" accept-charset="utf-8">
-            {{ xsrf_field }}
+            {{ xsrf_form_html() }}
             <ul>
                 <li>
                     {{ form.name.label() }}
@@ -39,7 +39,7 @@
                     </ul>
                     {% end %}
                 </li>
-                <li><input type="submit" value="Start using!"></li>
+                <li><input type="submit" value="{{ _("Start using!") }}"></li>
             </ul>
         </form>
     </body>

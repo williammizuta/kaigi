@@ -1,5 +1,8 @@
 import os
+
 import tornado.wsgi
+import tornado.locale
+
 import handlers.setup
 import handlers.home
 import handlers.index
@@ -17,6 +20,9 @@ settings = dict(
     xsrf_cookies=True,
     cookie_secret="asjidoh91239jasdasdasdasdasdkja8izxc21312sjdhsa/Vo=",
     )
+
+tornado.locale.load_translations(
+    os.path.join(os.path.dirname(__file__), "translations"))
 
 application = tornado.wsgi.WSGIApplication([
     (r'/', handlers.home.HomeHandler, dict(user_dao=UserDAO(), kaigi_dao=KaigiDAO())),
