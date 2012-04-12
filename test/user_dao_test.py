@@ -12,8 +12,8 @@ class user_dao_test:
         self.testbed.deactivate()
 
     def should_insert_an_user_as_admin(self):
-        google_user = users.User(email='teste@gmail.com')
         user_dao = UserDAO()
+        google_user = users.User(email='test@gmail.com')
         user_dao.insert_admin(google_user)
 
         loaded_user = user_dao.load(google_user)
