@@ -1,8 +1,6 @@
 import tornado.web
 
 from handlers.base import BaseHandler
-from models.kaigi import Kaigi
-from forms.kaigi import KaigiForm
 
 class HomeHandler(BaseHandler):
     def initialize(self, user_dao, kaigi_dao):

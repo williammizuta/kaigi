@@ -4,7 +4,7 @@ import tornado.web
 
 from handlers.base import BaseHandler
 from models.kaigi import Kaigi
-from forms.kaigi import KaigiForm
+from forms.kaigi import kaigi_form
 
 class SetupHandler(BaseHandler):
     def initialize(self, user_dao, kaigi_dao):
@@ -12,7 +12,7 @@ class SetupHandler(BaseHandler):
         self.kaigi_dao = kaigi_dao
 
     def go_to_setup_form(self):
-        self.render('setup.html', form=KaigiForm())
+        self.render('setup.html', form=kaigi_form(self))
 
     @tornado.web.authenticated
     def get(self):
@@ -21,7 +21,7 @@ class SetupHandler(BaseHandler):
     @tornado.web.authenticated
     def post(self):
         self.check_xsrf_cookie()
-        form = KaigiForm(handler=self)
+        form = kaigi_form(self)
         if form.validate():
             kaigi = Kaigi(**form.data)
             self.user_dao.insert_admin(self.get_current_user())
