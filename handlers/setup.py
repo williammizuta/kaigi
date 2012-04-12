@@ -11,8 +11,10 @@ class SetupHandler(BaseHandler):
         self.user_dao = user_dao
         self.kaigi_dao = kaigi_dao
 
-    def go_to_setup_form(self):
-        self.render('setup.html', form=forms.kaigi.kaigi_form(self))
+    def go_to_setup_form(self, form=None):
+        if form is None:
+            form = forms.kaigi.kaigi_form(self)
+        self.render('setup.html', form=form)
 
     @tornado.web.authenticated
     def get(self):
@@ -28,4 +30,4 @@ class SetupHandler(BaseHandler):
             self.kaigi_dao.insert(kaigi)
             self.redirect('/dashboard')
         else:
-            self.go_to_setup_form()
+            self.go_to_setup_form(form)

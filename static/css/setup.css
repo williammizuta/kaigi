@@ -48,3 +48,24 @@ input[type=submit] {
     cursor: pointer;
     position: absolute;
 }
+
+.errors {
+    position: absolute;
+    top: 6%;
+    width: 50%;
+    left: -47%;
+    background-color: #FCC;
+    padding: 2%;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.errors li {
+    position: relative;
+}
+
+.errors li:after {
+    content: '→';
+    position: absolute;
+    right: 0;
+}
