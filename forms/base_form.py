@@ -26,3 +26,6 @@ class BaseForm(Form):
 
     def _get_translations(self):
         return self.translate_obj
+
+    def get_data(self):
+        return self.data
