@@ -3,8 +3,15 @@
 <html>
     <head>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/reset.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/kaigi.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/fonts.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/setup.css") }}">
     </head>
     <body>
+        <h1>Welcome to Kaigi!</h1>
+        <p>Enter some information below about your meeting group to start using Kaigi</p>
+
         <form action="{{ request.uri }}" method="post" accept-charset="utf-8">
             {{ xsrf_field }}
             <ul>

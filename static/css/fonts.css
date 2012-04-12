@@ -1,0 +1,48 @@
+@font-face {
+    font-family: 'Averia Serif';
+    src: url('../fonts/AveriaSerif-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averia Serif';
+    src: url('../fonts/AveriaSerif-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Averia Serif';
+    src: url('../fonts/AveriaSerif-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Averia Serif';
+    src: url('../fonts/AveriaSerif-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Averia Serif';
+    src: url('../fonts/AveriaSerif-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Averia Serif';
+    src: url('../fonts/AveriaSerif-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cookie';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/Cookie-Regular.ttf') format('truetype');
+}

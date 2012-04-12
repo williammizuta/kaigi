@@ -1,0 +1,22 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background: #fff9d3 url('../images/bg.png') repeat right top;
+    color: #2b2017;
+    font-family: 'Cookie', cursive;
+    font-size: 180%;
+    position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Averia Serif';
+}
+
+h1 {
+    font-size: 250%;
+}
