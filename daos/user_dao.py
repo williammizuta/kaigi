@@ -3,6 +3,10 @@ from google.appengine.ext import db
 from models.user import User
 
 class UserDAO:
+    def insert(self, google_user):
+        user = User(user=google_user)
+        User.put(user)
+
     def insert_admin(self, google_user):
         admin = User(user=google_user, status = db.Category('ADMIN'))
         User.put(admin)
