@@ -33,4 +33,4 @@ class home_handler_test:
 
         self.handler.get()
 
-        verify(self.handler).redirect('/index')
+        verify(self.handler).redirect('/dashboard')

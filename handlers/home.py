@@ -14,4 +14,4 @@ class HomeHandler(BaseHandler):
             kaigi = self.kaigi_dao.get()
             self.render('home.html', kaigi=kaigi)
         else:
-            self.redirect('/index')
+            self.redirect('/dashboard')
