@@ -15,30 +15,20 @@
         <form action="{{ request.uri }}" method="post" accept-charset="utf-8">
             {{ xsrf_form_html() }}
             <ul>
+                {% for field in form %}
                 <li>
-                    {{ form.name.label() }}
-                    {{ form.name() }}
+                    {{ field.label() }}
+                    {{ field() }}
 
-                    {% if form.name.errors %}
+                    {% if field.errors %}
                     <ul class="errors">
-                        {% for error in form.name.errors %}
+                        {% for error in field.errors %}
                         <li>{{ error }}</li>
                         {% end %}
                     </ul>
                     {% end %}
                 </li>
-                <li>
-                    {{ form.description.label() }}
-                    {{ form.description() }}
-
-                    {% if form.description.errors %}
-                    <ul class="errors">
-                        {% for error in form.description.errors %}
-                        <li>{{ error }}</li>
-                        {% end %}
-                    </ul>
-                    {% end %}
-                </li>
+                {% end %}
                 <li><input type="submit" value="{{ _("Start using!") }}"></li>
             </ul>
         </form>
