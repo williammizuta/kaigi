@@ -23,3 +23,18 @@ class user_test:
         user = User(user=google_user)
 
         assert user.get_email() == email
+
+    def should_verify_if_the_user_is_admin(self):
+        google_user = users.User(email='test@gmail.com')
+
+        pending = User(user=google_user, status='PENDING')
+        admin = User(user=google_user, status='ADMIN')
+        approved = User(user=google_user, status='APPROVED')
+        declined = User(user=google_user, status='DECLINED')
+        default = User(user=google_user)
+
+        assert pending.is_admin() == False
+        assert approved.is_admin() == False
+        assert admin.is_admin() == True
+        assert declined.is_admin() == False
+        assert default.is_admin() == False

@@ -13,11 +13,12 @@ class user_approved_test:
 
         when(self.handler).get_current_user().thenReturn(self.current_user)
         when(self.handler).redirect().thenReturn(None)
+        when(self.handler).send_error().thenReturn(None)
 
     def should_redirect_to_home_if_current_user_is_not_registered(self):
         when(self.user_dao).load(self.current_user).thenReturn(None)
 
-        self.handler.mock_method()
+        self.handler.method_for_approved_users()
 
         verify(self.handler).redirect("/")
 
@@ -28,18 +29,56 @@ class user_approved_test:
         when(self.user_dao).load(self.current_user).thenReturn(user_pending_approval)
         when(self.handler).get_approve_pending_url().thenReturn(approve_pending_url)
 
-        self.handler.mock_method()
+        self.handler.method_for_approved_users()
 
         verify(self.handler).redirect(approve_pending_url)
+
+    def should_call_handler_method_if_user_is_approved(self):
+        approved_user = User(user=self.current_user, status='APPROVED')
+
+        when(self.user_dao).load(self.current_user).thenReturn(approved_user)
+
+        self.handler.method_for_approved_users()
+
+        assert self.handler.called == True
+
+    def should_redirect_to_home_if_unregistered_user_tries_to_access_admin_area(self):
+        when(self.user_dao).load(self.current_user).thenReturn(None)
+
+        self.handler.method_for_admins()
+
+        verify(self.handler).redirect('/')
+
+    def should_show_404_page_if_non_admin_tries_to_access_admin_area(self):
+        not_admin = User(user=self.current_user, status='APPROVED')
+        when(self.user_dao).load(self.current_user).thenReturn(not_admin)
+
+        self.handler.method_for_admins()
+
+        verify(self.handler).send_error(404)
+
+    def should_call_handler_method_if_user_is_admin(self):
+        admin = User(user=self.current_user, status='ADMIN')
+
+        when(self.user_dao).load(self.current_user).thenReturn(admin)
+
+        self.handler.method_for_admins()
+
+        assert self.handler.called == True
 
 class mock_handler:
     def __init__(self, current_user, user_dao):
         self.current_user = current_user
         self.user_dao = user_dao
+        self.called = False
 
     @approved
-    def mock_method(self):
-        pass
+    def method_for_approved_users(self):
+        self.called = True
+
+    @admin
+    def method_for_admins(self):
+        self.called = True
 
     def get_current_user(self):
         pass
@@ -48,4 +87,7 @@ class mock_handler:
         pass
 
     def get_approve_pending_url(self):
+        pass
+
+    def send_error(self, error_code):
         pass

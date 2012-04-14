@@ -7,5 +7,8 @@ class User(db.Model):
     def is_approved(self):
         return self.status == 'APPROVED' or self.status == 'ADMIN'
 
+    def is_admin(self):
+        return self.status == 'ADMIN'
+
     def get_email(self):
         return self.user.email()
