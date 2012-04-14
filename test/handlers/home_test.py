@@ -27,6 +27,7 @@ class home_handler_test:
     def should_redirect_to_dashboard_if_there_is_a_registered_user_and_there_is_a_logged_user(self):
         logged_user = mock()
         when(self.user_dao).has_no_user().thenReturn(False)
+        when(self.user_dao).load(logged_user).thenReturn(logged_user)
         when(self.handler).get_current_user().thenReturn(logged_user)
 
         self.handler.get()

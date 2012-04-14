@@ -9,7 +9,7 @@ class HomeHandler(BaseHandler):
     def get(self):
         if (self.user_dao.has_no_user()):
             self.redirect('/setup')
-        elif (self.get_current_user() is None):
+        elif (self.get_current_user() is None or self.user_dao.load(self.get_current_user()) is None):
             self.render('home.html')
         else:
             self.redirect('/dashboard')

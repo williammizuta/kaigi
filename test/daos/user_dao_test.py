@@ -71,3 +71,11 @@ class user_dao_test:
         user_dao.insert_admin(admin)
 
         assert user_dao.get_admin().user == admin
+
+    def should_get_or_create_a_user(self):
+        user_dao = UserDAO()
+        new_user = users.User(email='test@gmail.com')
+
+        assert user_dao.load(new_user) is None
+        assert user_dao.get_or_create(new_user) is not None
+        assert user_dao.load(new_user) is not None

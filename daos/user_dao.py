@@ -26,3 +26,7 @@ class UserDAO:
 
     def get_admin(self):
         return User.all().filter("status = ", 'ADMIN').get()
+
+    def get_or_create(self, google_user):
+         user = User.get_or_insert("some_key", user=google_user)
+         return user
