@@ -5,6 +5,10 @@ threadsafe: yes
 api_version: 1
 
 handlers:
+- url: /static/fonts
+  static_dir: static/fonts
+  mime_type: application/x-font-ttf
+
 - url: /static
   static_dir: static
 
