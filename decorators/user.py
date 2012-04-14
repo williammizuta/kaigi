@@ -11,7 +11,7 @@ def approved(method):
         user = UserDAO().load(google_user)
 
         if user is None:
-            return self.redirect(self.get_subscribe_url())
+            return self.redirect("/")
 
         if not user.is_approved():
             return self.redirect(self.get_approve_pending_url())
