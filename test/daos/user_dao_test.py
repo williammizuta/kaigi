@@ -77,5 +77,10 @@ class user_dao_test:
         new_user = users.User(email='test@gmail.com')
 
         assert user_dao.load(new_user) is None
-        assert user_dao.get_or_create(new_user) is not None
-        assert user_dao.load(new_user) is not None
+        created_user = user_dao.get_or_create(new_user)
+        assert created_user is not None
+        assert user_dao.load(new_user).user == created_user.user
+        the_same_user = user_dao.get_or_create(new_user)
+        assert the_same_user.user == created_user.user
+        all_pending_users = [u for u in user_dao.list_pending_approval()]
+        assert len(all_pending_users) == 1
