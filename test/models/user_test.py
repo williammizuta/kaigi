@@ -16,3 +16,10 @@ class user_test:
         assert approved.is_approved() == True
         assert declined.is_approved() == False
         assert default.is_approved() == False
+
+    def should_get_user_email(self):
+        email = "test@gmail.com"
+        google_user = users.User(email=email)
+        user = User(user=google_user)
+
+        assert user.get_email() == email
