@@ -13,13 +13,23 @@ class user_approved_test:
 
         when(self.handler).get_current_user().thenReturn(self.current_user)
         when(self.handler).redirect().thenReturn(None)
+        when(self.handler).send_error().thenReturn(None)
 
-    def should_get_or_register_current_user_and_redirect_to_approve_pending_url_if_not_registered(self):
-        new_or_existing_user = User(user=self.current_user)
+    def should_redirect_to_approve_pending_url_if_current_user_is_not_registered(self):
+        approve_pending_url = '/123'
+        when(self.user_dao).load(self.current_user).thenReturn(None)
+        when(self.handler).get_approve_pending_url().thenReturn(approve_pending_url)
+
+        self.handler.method_for_approved_users()
+
+        verify(self.handler).redirect(approve_pending_url)
+
+    def should_redirect_to_approve_pending_url_if_current_user_is_registered_but_pending_approval(self):
+        user_pending_approval = User(user=self.current_user, status='PENDING')
         approve_pending_url = '/123'
 
+        when(self.user_dao).load(self.current_user).thenReturn(user_pending_approval)
         when(self.handler).get_approve_pending_url().thenReturn(approve_pending_url)
-        when(self.user_dao).get_or_create(self.current_user).thenReturn(new_or_existing_user)
 
         self.handler.method_for_approved_users()
 
@@ -27,22 +37,12 @@ class user_approved_test:
 
     def should_call_handler_method_if_user_is_approved(self):
         approved_user = User(user=self.current_user, status='APPROVED')
-        when(self.user_dao).get_or_create(self.current_user).thenReturn(approved_user)
+
+        when(self.user_dao).load(self.current_user).thenReturn(approved_user)
 
         self.handler.method_for_approved_users()
 
         assert self.handler.called == True
-
-class user_admin_test:
-
-    def setup(self):
-        self.user_dao = mock(UserDAO)
-        self.current_user = users.User(email='user@gmail.com')
-        self.handler = mock_handler(self.current_user, self.user_dao)
-
-        when(self.handler).get_current_user().thenReturn(self.current_user)
-        when(self.handler).redirect().thenReturn(None)
-        when(self.handler).send_error().thenReturn(None)
 
     def should_redirect_to_home_if_unregistered_user_tries_to_access_admin_area(self):
         when(self.user_dao).load(self.current_user).thenReturn(None)
