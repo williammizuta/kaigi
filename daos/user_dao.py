@@ -17,3 +17,6 @@ class UserDAO:
 
     def has_no_user(self):
         return User.all().count() == 0
+
+    def list_pending_approval(self):
+        return User.all().filter("status =", 'PENDING')
