@@ -7,17 +7,16 @@ class PendingHandler(BaseHandler):
     def initialize(self, user_dao):
         self.user_dao = user_dao
 
-    #TODO: we need to write message body
     def send_email(self):
         admin_email = self.user_dao.get_admin().get_email()
         mail.send_mail(sender=admin_email,
                     subject="New user",
-                    to=admin_email,
+                    to=self.get_current_user().get_email(),
                     body="body")
 
     @tornado.web.authenticated
     def get(self):
-        self.user_dao.get_or_create(users.get_current_user())
+        self.user_dao.get_or_create(self.get_current_user())
         self.send_email()
         self.render('pending.html')
 
