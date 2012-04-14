@@ -1,0 +1,32 @@
+body {
+    padding: 10% 25%;
+}
+
+body * {
+    padding: 5px 0;
+}
+
+p {
+    font-size: 200%;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+form {
+    position: absolute;
+    right: 25%;
+}
+
+input[type=submit] {
+    border-radius: 10px;
+    border: 2px solid black;
+    background-color: #e0d29d;
+    font-family: 'Averia Serif';
+    color: #2b2017;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    font-size: 100%;
+    width: 300px;
+}

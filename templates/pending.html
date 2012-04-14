@@ -6,8 +6,16 @@
         <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/reset.css") }}">
         <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/kaigi.css") }}">
         <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/fonts.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/pending.css") }}">
         <title>{{ kaigi.name }}</title>
     </head>
     <body>
+        <p>
+            {{ _("An e-mail was sent to the administrator. You need to wait the approval to enter in the group. If you do not want to participate anymore, click the button bellow.") }}
+        </p>
+        <form action="{{ request.uri }}" method="post" accept-charset="utf-8">
+            {{ xsrf_form_html() }}
+            <input type="submit" value="{{ _("Leave the group") }}">
+        </form>
     </body>
 </html>

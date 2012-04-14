@@ -1,5 +1,5 @@
 import tornado.web
-from google.appengine.api import mail
+from google.appengine.api import mail, users
 
 from handlers.base import BaseHandler
 
@@ -17,6 +17,7 @@ class PendingHandler(BaseHandler):
 
     @tornado.web.authenticated
     def get(self):
+        self.user_dao.get_or_create(users.get_current_user())
         self.send_email()
         self.render('pending.html')
 
