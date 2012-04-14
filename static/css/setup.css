@@ -7,28 +7,29 @@ body * {
 }
 
 form {
-    position: absolute;
-    right: 25%;
+    margin-left: 25%;
 }
 
 input, textarea {
     right: 0;
     padding: 5px;
     font-size: 100%;
-    width: 300px;
+    width: 70%;
+    height: 1.75em;
 }
 
 label {
     display: inline-block;
-    width: 150px;
+    width: 25%;
     text-align: right;
-    margin-right: 5px;
+    margin-right: 1%;
 }
 
 input[type=text], textarea {
-    border: 2px solid gray;
+    border: 2px solid #2b2017;
     border-style: inset;
-    border-radius: 5px;
+    border-radius: 10px;
+    color: #2b2017;
 }
 
 label ~ textarea {
@@ -36,36 +37,26 @@ label ~ textarea {
 }
 
 textarea {
-    height: 6em;
+    height: 8em;
 }
 
 input[type=submit] {
     border-radius: 10px;
-    border: 2px solid black;
+    border: 2px solid #2b2017;
     background-color: #e0d29d;
     font-family: 'Averia Serif';
     color: #2b2017;
     cursor: pointer;
-    position: absolute;
+    margin-left: 27%;
 }
 
 .errors {
     position: absolute;
-    top: 6%;
-    width: 50%;
-    left: -47%;
+    width: 18%;
+    margin-left: 37.5%;
     background-color: #FCC;
-    padding: 2%;
+    padding: 0.35em 1%;
     font-size: 80%;
     border-radius: 5px;
-}
-
-.errors li {
-    position: relative;
-}
-
-.errors li:after {
-    content: '→';
-    position: absolute;
-    right: 0;
+    margin-top: -2.175em;
 }
