@@ -5,6 +5,7 @@ import tornado.locale
 
 import handlers.setup
 import handlers.home
+import handlers.register
 import handlers.dashboard
 import handlers.pending
 import handlers.admin.approvals
@@ -27,6 +28,7 @@ tornado.locale.load_translations(
 
 application = tornado.wsgi.WSGIApplication([
     (r'/', handlers.home.HomeHandler, dict(user_dao=UserDAO())),
+    (r'/register', handlers.register.RegisterHandler, dict(user_dao=UserDAO())),
     (r'/dashboard', handlers.dashboard.DashboardHandler, dict(user_dao=UserDAO())),
     (r'/setup', handlers.setup.SetupHandler, dict(user_dao=UserDAO(), kaigi_dao=KaigiDAO())),
     (r'/pending', handlers.pending.PendingHandler, dict(user_dao=UserDAO())),

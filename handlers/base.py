@@ -8,7 +8,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def render_string(self, template_name, **kwargs):
         kaigi = KaigiDAO().get()
-        return tornado.web.RequestHandler.render_string(self, template_name, users=users, kaigi=kaigi, **kwargs)
+        return tornado.web.RequestHandler.render_string(self, template_name, kaigi=kaigi, **kwargs)
 
     def get_login_url(self):
         return users.create_login_url(self.request.uri)

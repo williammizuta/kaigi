@@ -10,8 +10,9 @@
         <title>{{ kaigi.name }}</title>
     </head>
     <body>
-        <h1>{{ kaigi.name }}</h1>
-        <p>{{ kaigi.description }}</p>
-        <a href=register>{{ _("Enter") }}</a>
+        <form action=register method=post>
+            {{ xsrf_form_html() }}
+            <input type=submit value="{{ _("Register") }}">
+        </form>
     </body>
 </html>
