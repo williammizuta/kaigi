@@ -1,11 +1,12 @@
 from handlers.home import HomeHandler
+from daos.user_dao import UserDAO
 from mockito import mock, when, verify, any
 
 class home_handler_test:
 
     def setup(self):
         self.handler = object.__new__(HomeHandler)
-        self.user_dao = mock()
+        self.user_dao = mock(UserDAO)
         self.handler.initialize(self.user_dao)
         when(self.handler).redirect().thenReturn(None)
         when(self.handler).render().thenReturn(None)
