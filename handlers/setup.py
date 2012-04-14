@@ -18,6 +18,8 @@ class SetupHandler(BaseHandler):
 
     @tornado.web.authenticated
     def get(self):
+        if self.kaigi_dao.get() != None:
+            return self.redirect('/dashboard')
         self.go_to_setup_form()
 
     @tornado.web.authenticated

@@ -20,10 +20,20 @@ class setup_handler_test:
 
     # TODO: discover how to test when the user is not logged in
 
-    def should_render_setup_form_when_getting_if_authenticated(self):
+    def should_render_setup_form_when_getting_if_authenticated_and_no_kaigi_exists(self):
+        when(self.kaigi_dao).get().thenReturn(None)
+
         self.handler.get()
 
         verify(self.handler).render('setup.html', form=self.form)
+
+    def should_redirect_to_dashboard_if_there_is_a_kaigi_already(self):
+        existing_kaigi = mock()
+        when(self.kaigi_dao).get().thenReturn(existing_kaigi)
+
+        self.handler.get()
+
+        verify(self.handler).redirect('/dashboard')
 
     def should_check_xsrf_cookie(self):
         when(self.handler).check_xsrf_cookie().thenRaise(NotImplementedError("FAIL!"))
