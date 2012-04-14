@@ -15,12 +15,14 @@ class user_approved_test:
         when(self.handler).redirect().thenReturn(None)
         when(self.handler).send_error().thenReturn(None)
 
-    def should_redirect_to_home_if_current_user_is_not_registered(self):
+    def should_redirect_to_approve_pending_url_if_current_user_is_not_registered(self):
+        approve_pending_url = '/123'
         when(self.user_dao).load(self.current_user).thenReturn(None)
+        when(self.handler).get_approve_pending_url().thenReturn(approve_pending_url)
 
         self.handler.method_for_approved_users()
 
-        verify(self.handler).redirect("/")
+        verify(self.handler).redirect(approve_pending_url)
 
     def should_redirect_to_approve_pending_url_if_current_user_is_registered_but_pending_approval(self):
         user_pending_approval = User(user=self.current_user, status='PENDING')

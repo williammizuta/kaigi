@@ -10,10 +10,7 @@ def approved(method):
         google_user = self.get_current_user()
         user = self.user_dao.load(google_user)
 
-        if user is None:
-            return self.redirect("/")
-
-        if not user.is_approved():
+        if user is None or not user.is_approved():
             return self.redirect(self.get_approve_pending_url())
 
         return method(self, *args, **kargs)
