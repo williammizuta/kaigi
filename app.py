@@ -7,6 +7,7 @@ import handlers.setup
 import handlers.home
 import handlers.dashboard
 import handlers.pending
+import handlers.admin.approvals
 
 from daos.user_dao import UserDAO
 from daos.kaigi_dao import KaigiDAO
