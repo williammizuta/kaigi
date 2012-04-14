@@ -25,4 +25,4 @@ class UserDAO:
         return User.all().filter("status =", 'PENDING')
 
     def get_admin(self):
-        return User.all().filter("status = ", db.Category('ADMIN')).get()
+        return User.all().filter("status = ", 'ADMIN').get()

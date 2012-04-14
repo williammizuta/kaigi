@@ -64,3 +64,10 @@ class user_dao_test:
         user_dao.remove(new_user)
         loaded_user = user_dao.load(new_user)
         assert loaded_user is None
+
+    def should_get_admin(self):
+        user_dao = UserDAO()
+        admin = users.User(email='test@gmail.com')
+        user_dao.insert_admin(admin)
+
+        assert user_dao.get_admin().user == admin
