@@ -7,8 +7,6 @@ class DashboardHandler(BaseHandler):
     def initialize(self, user_dao):
         self.user_dao = user_dao
 
+    @decorators.user.approved
     def get(self):
-        @decorators.user.approved(self.user_dao)
-        def run(self):
-            self.render('dashboard.html')
-        run(self)
+        self.render('dashboard.html')

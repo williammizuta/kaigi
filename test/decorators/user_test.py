@@ -7,19 +7,17 @@ from models.user import User
 class user_approved_test:
 
     def setup(self):
-        def mock_method():
-            pass
-        self.handler = mock()
         self.user_dao = mock(UserDAO)
         self.current_user = users.User(email='user@gmail.com')
-        self.decorated_method = approved(self.user_dao)(mock_method)
+        self.handler = mock_handler(self.current_user, self.user_dao)
 
         when(self.handler).get_current_user().thenReturn(self.current_user)
+        when(self.handler).redirect().thenReturn(None)
 
     def should_redirect_to_home_if_current_user_is_not_registered(self):
         when(self.user_dao).load(self.current_user).thenReturn(None)
 
-        self.decorated_method(self.handler)
+        self.handler.mock_method()
 
         verify(self.handler).redirect("/")
 
@@ -30,6 +28,24 @@ class user_approved_test:
         when(self.user_dao).load(self.current_user).thenReturn(user_pending_approval)
         when(self.handler).get_approve_pending_url().thenReturn(approve_pending_url)
 
-        self.decorated_method(self.handler)
+        self.handler.mock_method()
 
         verify(self.handler).redirect(approve_pending_url)
+
+class mock_handler:
+    def __init__(self, current_user, user_dao):
+        self.current_user = current_user
+        self.user_dao = user_dao
+
+    @approved
+    def mock_method(self):
+        pass
+
+    def get_current_user(self):
+        pass
+
+    def redirect(self, url):
+        pass
+
+    def get_approve_pending_url(self):
+        pass
