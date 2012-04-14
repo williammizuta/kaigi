@@ -2,14 +2,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/reset.css") }}">
         <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/kaigi.css") }}">
         <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/fonts.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/home.css") }}">
         <title>{{ kaigi.name }}</title>
     </head>
     <body>
         <h1>{{ kaigi.name }}</h1>
         <p>{{ kaigi.description }}</p>
-        <a href=dashboard>Enter</a>
+        <a href=dashboard>{{ _("Enter") }}</a>
     </body>
 </html>
