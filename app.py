@@ -29,4 +29,5 @@ application = tornado.wsgi.WSGIApplication([
     (r'/dashboard', handlers.dashboard.DashboardHandler, dict(user_dao=UserDAO())),
     (r'/setup', handlers.setup.SetupHandler, dict(user_dao=UserDAO(), kaigi_dao=KaigiDAO())),
     (r'/pending', handlers.pending.PendingHandler, dict(user_dao=UserDAO())),
+    (r'/admin/approvals', handlers.admin.approvals.ApprovalsHandler, dict(user_dao=UserDAO())),
     ], **settings)
