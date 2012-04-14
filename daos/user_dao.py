@@ -11,6 +11,9 @@ class UserDAO:
         admin = User(user=google_user, status = db.Category('ADMIN'))
         User.put(admin)
 
+    def remove(self, google_user):
+        self.load(google_user=google_user).delete()
+
     def load(self, google_user):
         users = User.all()
         return users.filter("user = ", google_user).get()
@@ -20,3 +23,6 @@ class UserDAO:
 
     def list_pending_approval(self):
         return User.all().filter("status =", 'PENDING')
+
+    def get_admin(self):
+        return User.all().filter("status = ", db.Category('ADMIN')).get()

@@ -52,3 +52,15 @@ class user_dao_test:
         users_pending_approval = [u.user.email() for u in self.user_dao.list_pending_approval()]
 
         assert pending_approval.user.email() in users_pending_approval
+
+    def should_remove_user(self):
+        user_dao = UserDAO()
+        new_user = users.User(email='test@gmail.com')
+        user_dao.insert(google_user=new_user)
+
+        loaded_user = user_dao.load(new_user)
+        assert loaded_user is not None
+
+        user_dao.remove(new_user)
+        loaded_user = user_dao.load(new_user)
+        assert loaded_user is None
