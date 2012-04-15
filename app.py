@@ -8,9 +8,11 @@ import handlers.home
 import handlers.dashboard
 import handlers.pending
 import handlers.admin.approvals
+import handlers.admin.meetings
 
 from daos.user_dao import UserDAO
 from daos.kaigi_dao import KaigiDAO
+from daos.meeting_dao import MeetingDAO
 
 # Constants
 IS_DEV = os.environ['SERVER_SOFTWARE'].startswith('Dev')  # Development server
@@ -31,4 +33,5 @@ application = tornado.wsgi.WSGIApplication([
     (r'/setup', handlers.setup.SetupHandler, dict(user_dao=UserDAO(), kaigi_dao=KaigiDAO())),
     (r'/pending', handlers.pending.PendingHandler, dict(user_dao=UserDAO())),
     (r'/admin/approvals', handlers.admin.approvals.ApprovalsHandler, dict(user_dao=UserDAO())),
+    (r'/admin/meetings/new', handlers.admin.meetings.NewMeetingHandler, dict(user_dao=UserDAO(), meeting_dao=MeetingDAO())),
     ], **settings)

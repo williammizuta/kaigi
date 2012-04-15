@@ -1,0 +1,37 @@
+{% autoescape None %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kaigi - {{ _("New meeting") }}</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/reset.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/kaigi.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/fonts.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/setup.css") }}">
+    </head>
+    <body>
+        <h1>{{ _("New meeting") }}</h1>
+        <p>{{ _("Enter the information below to schedule a new meeting") }}</p>
+
+        <form action="{{ request.uri }}" method="post" accept-charset="utf-8">
+            {{ xsrf_form_html() }}
+            <ul>
+                {% for field in form %}
+                <li>
+                    {{ field.label() }}
+                    {{ field() }}
+
+                    {% if field.errors %}
+                    <ul class="errors">
+                        {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                        {% end %}
+                    </ul>
+                    {% end %}
+                </li>
+                {% end %}
+                <li><input type="submit" value="{{ _("Schedule") }}"></li>
+            </ul>
+        </form>
+    </body>
+</html>
