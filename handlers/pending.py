@@ -11,13 +11,17 @@ class PendingHandler(BaseHandler):
         admin_email = self.user_dao.get_admin().get_email()
         mail.send_mail(sender=admin_email,
                     subject="New user",
-                    to=self.get_current_user().get_email(),
+                    to=admin_email,
                     body="body")
 
     @tornado.web.authenticated
     def get(self):
-        self.user_dao.get_or_create(self.get_current_user())
-        self.send_email()
+        registered_user = self.user_dao.load(self.get_current_user())
+        if registered_user is None:
+            self.user_dao.insert(self.get_current_user())
+            self.send_email()
+        elif registered_user.is_approved():
+            return self.redirect('/dashboard')
         self.render('pending.html')
 
     @tornado.web.authenticated
