@@ -1,5 +1,5 @@
 import tornado.web
-from google.appengine.api import mail, users
+from google.appengine.api import mail
 
 from handlers.base import BaseHandler
 
@@ -7,6 +7,7 @@ class PendingHandler(BaseHandler):
     def initialize(self, user_dao):
         self.user_dao = user_dao
 
+    # TODO create the email
     def send_email(self):
         admin_email = self.user_dao.get_admin().get_email()
         mail.send_mail(sender=admin_email,

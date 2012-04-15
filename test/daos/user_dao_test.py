@@ -88,3 +88,10 @@ class user_dao_test:
 
         after_approval = self.user_dao.load(google_to_be_approved)
         assert after_approval.status == 'APPROVED'
+
+    def should_load_an_user_by_key(self):
+        google_user = users.User(email='test@gmail.com')
+        self.user_dao.insert(google_user)
+        user = self.user_dao.load(google_user)
+
+        assert self.user_dao.get_by_key(str(user.key())).user == google_user

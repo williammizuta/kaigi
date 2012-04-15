@@ -32,6 +32,9 @@ class UserDAO:
         return user
 
     def approve(self, key):
-        user = User.all().filter("__key__ = ", db.Key(key)).get()
+        user = self.get_by_key(key)
         user.status = 'APPROVED'
         user.put()
+
+    def get_by_key(self, key):
+        return User.all().filter("__key__ = ", db.Key(key)).get()
