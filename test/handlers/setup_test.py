@@ -18,8 +18,6 @@ class setup_handler_test:
         when(self.handler).get_current_user().thenReturn(self.logged_user)
         when(forms.kaigi).kaigi_form(self.handler).thenReturn(self.form)
 
-    # TODO: discover how to test when the user is not logged in
-
     def should_render_setup_form_when_getting_if_authenticated_and_no_kaigi_exists(self):
         when(self.kaigi_dao).get().thenReturn(None)
 

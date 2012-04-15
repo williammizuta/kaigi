@@ -54,28 +54,37 @@ class user_dao_test:
         assert pending_approval.user.email() in users_pending_approval
 
     def should_remove_user(self):
-        user_dao = UserDAO()
         new_user = users.User(email='test@gmail.com')
-        user_dao.insert(google_user=new_user)
+        self.user_dao.insert(google_user=new_user)
 
-        loaded_user = user_dao.load(new_user)
+        loaded_user = self.user_dao.load(new_user)
         assert loaded_user is not None
 
-        user_dao.remove(new_user)
-        loaded_user = user_dao.load(new_user)
+        self.user_dao.remove(new_user)
+        loaded_user = self.user_dao.load(new_user)
         assert loaded_user is None
 
     def should_get_admin(self):
-        user_dao = UserDAO()
         admin = users.User(email='test@gmail.com')
-        user_dao.insert_admin(admin)
+        self.user_dao.insert_admin(admin)
 
-        assert user_dao.get_admin().user == admin
+        assert self.user_dao.get_admin().user == admin
 
     def should_get_or_create_a_user(self):
-        user_dao = UserDAO()
         new_user = users.User(email='test@gmail.com')
 
-        assert user_dao.load(new_user) is None
-        assert user_dao.get_or_create(new_user) is not None
-        assert user_dao.load(new_user) is not None
+        assert self.user_dao.load(new_user) is None
+        assert self.user_dao.get_or_create(new_user) is not None
+        assert self.user_dao.load(new_user) is not None
+
+    def should_approve_an_user(self):
+        google_to_be_approved = users.User(email='test@gmail.com')
+        self.user_dao.insert(google_to_be_approved)
+        to_be_approved = self.user_dao.load(google_to_be_approved)
+
+        assert to_be_approved.status == 'PENDING'
+
+        self.user_dao.approve(str(to_be_approved.key()))
+
+        after_approval = self.user_dao.load(google_to_be_approved)
+        assert after_approval.status == 'APPROVED'

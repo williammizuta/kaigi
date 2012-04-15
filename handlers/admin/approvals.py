@@ -11,3 +11,9 @@ class ApprovalsHandler(BaseHandler):
     def get(self):
         pending = self.user_dao.list_pending_approval()
         self.render('pending_approval.html', users=pending)
+
+    @admin
+    def post(self):
+        user_key = self.get_argument('key')
+        self.user_dao.approve(user_key)
+        self.redirect('/admin/approvals')

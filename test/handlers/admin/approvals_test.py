@@ -26,3 +26,12 @@ class approvals_handler_test:
         self.handler.get()
 
         verify(self.handler).render('pending_approval.html', users=pending)
+
+    def should_mark_an_user_as_approved_and_redirect_to_the_list(self):
+        to_be_approved = 'abc123'
+        when(self.handler).get_argument('key').thenReturn(to_be_approved)
+
+        self.handler.post()
+
+        verify(self.user_dao).approve(to_be_approved)
+        verify(self.handler).redirect('/admin/approvals')

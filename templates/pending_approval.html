@@ -1,0 +1,31 @@
+{% autoescape None %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/reset.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/kaigi.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/fonts.css") }}">
+        <link rel=stylesheet type=text/css media=screen href="{{ static_url("css/pending_approval.css") }}">
+        <title>Kaigi - {{ _("Pending approvals") }}</title>
+    </head>
+    <body>
+        <h1>{{ _("Pending approvals") }}</h1>
+        <table>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ escape(user.get_email()) }}</td>
+                    <td>
+                        <form action="{{ request.uri }}" method=post>
+                            {{ xsrf_form_html() }}
+                            <input type=hidden name=key value="{{ user.key() }}">
+                            <input type=submit value="{{ _("Approve") }}">
+                        </form>
+                    </td>
+                </tr>
+                {% end %}
+            </tbody>
+        </table>
+    </body>
+</html>

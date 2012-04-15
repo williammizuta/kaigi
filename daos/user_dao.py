@@ -22,11 +22,16 @@ class UserDAO:
         return User.all().count() == 0
 
     def list_pending_approval(self):
-        return User.all().filter("status =", 'PENDING')
+        return User.all().filter("status = ", 'PENDING')
 
     def get_admin(self):
         return User.all().filter("status = ", 'ADMIN').get()
 
     def get_or_create(self, google_user):
-         user = User.get_or_insert("some_key", user=google_user)
-         return user
+        user = User.get_or_insert("some_key", user=google_user)
+        return user
+
+    def approve(self, key):
+        user = User.all().filter("__key__ = ", db.Key(key)).get()
+        user.status = 'APPROVED'
+        user.put()
