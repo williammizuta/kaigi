@@ -29,7 +29,7 @@ tornado.locale.load_translations(
 
 application = tornado.wsgi.WSGIApplication([
     (r'/', handlers.home.HomeHandler, dict(user_dao=UserDAO())),
-    (r'/dashboard', handlers.dashboard.DashboardHandler, dict(user_dao=UserDAO())),
+    (r'/dashboard', handlers.dashboard.DashboardHandler, dict(user_dao=UserDAO(), meeting_dao=MeetingDAO())),
     (r'/setup', handlers.setup.SetupHandler, dict(user_dao=UserDAO(), kaigi_dao=KaigiDAO())),
     (r'/pending', handlers.pending.PendingHandler, dict(user_dao=UserDAO())),
     (r'/admin/approvals', handlers.admin.approvals.ApprovalsHandler, dict(user_dao=UserDAO())),
