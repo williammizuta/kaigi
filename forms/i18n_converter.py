@@ -1,7 +1,7 @@
 from wtforms.ext.appengine.db import ModelConverter
 from wtforms import validators, fields as f
 
-from forms.custom_fields import HTML5DateTimeField, TagListField
+from custom_fields import HTML5DateTimeField, TagListField
 
 def convert_DateTimeProperty_with_html5(model, prop, kwargs):
     return HTML5DateTimeField(**kwargs)
