@@ -1,5 +1,6 @@
 from wtforms.widgets import Input
 from wtforms import Field, DateTimeField, widgets
+from google.appengine.ext import db
 
 class TagListField(Field):
     widget = widgets.TextInput()
@@ -15,7 +16,7 @@ class TagListField(Field):
 
     def process_formdata(self, valuelist):
         if valuelist:
-            self.data = [x.strip() for x in valuelist[0].split(',')]
+            self.data = [db.Category(x.strip()) for x in valuelist[0].split(',')]
         else:
             self.data = []
 
