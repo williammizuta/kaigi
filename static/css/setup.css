@@ -25,7 +25,7 @@ label {
     margin-right: 1%;
 }
 
-input[type=text], textarea {
+input[type=text], input[type=datetime-local], textarea {
     border: 2px solid #2b2017;
     border-style: inset;
     border-radius: 10px;
