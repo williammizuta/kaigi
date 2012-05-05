@@ -8,6 +8,9 @@
         <link rel=stylesheet media=screen href="{{ static_url("css/kaigi.css") }}">
         <link rel=stylesheet media=screen href="{{ static_url("css/fonts.css") }}">
         <link rel=stylesheet media=screen href="{{ static_url("css/setup.css") }}">
+        <link rel=stylesheet media=screen href="{{ static_url("css/custom-theme/jquery-ui-1.8.20.custom.css") }}">
+        <link rel=stylesheet media=screen href="{{ static_url("css/timepicker.css") }}">
+        <script src="{{ static_url("js/head.load.min.js") }}"></script>
     </head>
     <body>
         <h1>{{ _("New meeting") }}</h1>
@@ -33,5 +36,11 @@
                 <li><input type="submit" value="{{ _("Schedule") }}"></li>
             </ul>
         </form>
+        <script>
+            head.js('{{ static_url("js/jquery-1.7.2.min.js") }}',
+            '{{ static_url("js/jquery-ui-1.8.20.custom.min.js") }}',
+            '{{ static_url("js/jquery-ui-timepicker-addon.js") }}',
+            '{{ static_url("js/new_meeting.js") }}');
+        </script>
     </body>
 </html>

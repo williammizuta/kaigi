@@ -25,3 +25,6 @@ class DateTimeInput(Input):
 
 class HTML5DateTimeField(DateTimeField):
     widget = DateTimeInput()
+
+    def __init__(self, label=None, validators=None, **kwargs):
+        super(HTML5DateTimeField, self).__init__(label, validators, format='%Y-%m-%d %H:%M', **kwargs)
