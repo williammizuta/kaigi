@@ -1,6 +1,6 @@
 {% if next_meeting is None %}
-    <p>{{ _("Our ninja iguanas are trying to set the next meenting's date, wait a few days.") }}</p>
+    <p>{{ _("Our ninja iguanas are trying to set the next meeting's date. Wait a few days.") }}</p>
 {% else %}
-    <p>{{ _("Next meeting") }}:</p>
-    <p>{{ _(next_meeting.day) }}</p>
+    <h1>{{ _("Next meeting") }}:</h1>
+    <p>{{ next_meeting.day }}</p>
 {% end %}

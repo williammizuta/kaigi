@@ -9,8 +9,12 @@
         <title>Kaigi - {{ _("Dashboard") }}</title>
     </head>
     <body>
-        <section id="next_meeting">
+        <section class=next_meeting>
             {% include "next_meeting.html" %}
+        </section>
+        <section class=past_meetings>
+        </section>
+        <section class=meeting_notes>
         </section>
     </body>
 </html>

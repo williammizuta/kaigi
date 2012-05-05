@@ -7,19 +7,31 @@ body * {
 }
 
 section {
-    border-style: inset;
-    border-color: #DFD9B3;
-    border-width: 3px;
-    padding: 15px;
+    border: 3px dashed #dfd9b3;
+    padding: 2.5%;
     width: 50%;
     text-align: center;
+    overflow: auto;
+    position: absolute;
 }
 
 section p {
     font-size: 200%;
 }
 
-section#next_meeting {
-    float: left;
-    min-height: 50%;
+section.next_meeting, section.past_meetings {
+    height: 50%;
+    border-top: none;
+    border-left: none;
+}
+
+section.past_meetings {
+    top: 50%;
+    border-bottom: none;
+}
+
+section.meeting_notes {
+    border: none;
+    left: 50%;
+    height: 100%;
 }
