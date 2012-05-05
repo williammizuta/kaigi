@@ -18,12 +18,6 @@ form {
 }
 
 input[type=submit] {
-    border-radius: 10px;
-    border: 2px solid black;
-    background-color: #e0d29d;
-    font-family: 'Averia Serif';
-    color: #2b2017;
-    cursor: pointer;
     position: absolute;
     right: 0;
     padding: 5px;

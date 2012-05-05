@@ -20,3 +20,28 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: 250%;
 }
+
+input[type=submit] {
+    border-radius: 10px;
+    border: 2px solid #2b2017;
+    background-color: #e0d29d;
+    font-family: 'Averia Serif';
+    color: #2b2017;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #fff2bd;
+    color: #3b3027;
+    border-color: #3b3027;
+}
+
+input[type=submit]:active {
+    background-color: #d0c28d;
+    color: #1b1007;
+    border-color: #1b1007;
+}
+
+label ~ textarea {
+    vertical-align: top;
+}
