@@ -15,22 +15,31 @@ section {
     position: absolute;
 }
 
-section p {
+.next_meeting p {
     font-size: 200%;
+    width: 60%;
+    float: left;
 }
 
-section.next_meeting, section.past_meetings {
+.next_meeting .ninja_iguana {
+    float: right;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+
+.next_meeting, .past_meetings {
     height: 50%;
     border-top: none;
     border-left: none;
 }
 
-section.past_meetings {
+.past_meetings {
     top: 50%;
     border-bottom: none;
 }
 
-section.meeting_notes {
+.meeting_notes {
     border: none;
     left: 50%;
     height: 100%;
