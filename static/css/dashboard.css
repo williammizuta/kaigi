@@ -17,8 +17,11 @@ section {
 
 .next_meeting p {
     font-size: 200%;
-    width: 60%;
+}
+
+.next_meeting p.no_meeting {
     float: left;
+    width: 60%;
 }
 
 .next_meeting .ninja_iguana {
