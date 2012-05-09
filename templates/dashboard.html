@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <title>Kaigi - {{ _("Dashboard") }}</title>
         <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <link rel=stylesheet media=screen href="{{ static_url("css/reset.css") }}">
         <link rel=stylesheet media=screen href="{{ static_url("css/kaigi.css") }}">
         <link rel=stylesheet media=screen href="{{ static_url("css/fonts.css") }}">
         <link rel=stylesheet media=screen href="{{ static_url("css/dashboard.css") }}">
-        <title>Kaigi - {{ _("Dashboard") }}</title>
+        <script src="{{ static_url("js/head.load.min.js") }}"></script>
     </head>
     <body>
         <section class=next_meeting>
@@ -17,5 +18,9 @@
         </section>
         <section class=meeting_notes>
         </section>
+        <script>
+            head.js('{{ static_url("js/jquery-1.7.2.min.js") }}',
+            '{{ static_url("js/dashboard.js") }}');
+        </script>
     </body>
 </html>

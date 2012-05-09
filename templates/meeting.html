@@ -1,0 +1,21 @@
+{% autoescape None %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <link rel=stylesheet media=screen href="{{ static_url("css/reset.css") }}">
+        <link rel=stylesheet media=screen href="{{ static_url("css/kaigi.css") }}">
+        <link rel=stylesheet media=screen href="{{ static_url("css/fonts.css") }}">
+        <title>{{ _("Meeting minute") }}</title>
+    </head>
+    <body>
+        <article>
+            <h1>{{ _("Meeting of %(day)s") % { 'day': locale.format_date(meeting.day) } }}</h1>
+            {% if meeting.minute %}
+            <p>{{ escape(meeting.minute) }}</p>
+            {% else %}
+            <p>{{ _("No minute for this meeting yet") }}</p>
+            {% end %}
+        </article>
+    </body>
+</html>

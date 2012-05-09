@@ -58,3 +58,10 @@ class meeting_dao_test:
         result = [m for m in self.meeting_dao.previous_meetings()]
 
         eq_(past_meetings, result)
+
+    def should_get_a_meeting_by_key(self):
+        meeting = Meeting(day = self.yesterday)
+        saved_meeting_key = self.meeting_dao.insert(meeting)
+        loaded_meeting = self.meeting_dao.get_by_key(str(saved_meeting_key))
+
+        eq_(loaded_meeting, meeting)

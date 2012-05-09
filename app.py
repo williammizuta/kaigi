@@ -7,6 +7,7 @@ import handlers.setup
 import handlers.home
 import handlers.dashboard
 import handlers.pending
+import handlers.meetings
 import handlers.admin.approvals
 import handlers.admin.meetings
 
@@ -34,4 +35,5 @@ application = tornado.wsgi.WSGIApplication([
     (r'/pending', handlers.pending.PendingHandler, dict(user_dao=UserDAO())),
     (r'/admin/approvals', handlers.admin.approvals.ApprovalsHandler, dict(user_dao=UserDAO())),
     (r'/admin/meetings/new', handlers.admin.meetings.NewMeetingHandler, dict(user_dao=UserDAO(), meeting_dao=MeetingDAO())),
+    (r'/meetings/(.+)', handlers.meetings.MeetingsHandler, dict(user_dao=UserDAO(), meeting_dao=MeetingDAO())),
     ], **settings)

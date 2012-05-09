@@ -1,6 +1,6 @@
 <h1>{{ _("Previous meetings") }}</h1>
 <ul>
     {% for meeting in previous_meetings %}
-    <li>{{ locale.format_date(meeting.day) }}</li>
+    <li><a href="/meetings/{{ meeting.key() }}" class=past_meeting>{{ locale.format_date(meeting.day) }}</a></li>
     {% end %}
 </ul>

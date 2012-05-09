@@ -46,3 +46,6 @@
 "Sunday","Domingo"
 "%(weekday)s at %(time)s","%(weekday)s às %(time)s"
 "%(month_name)s %(day)s at %(time)s","Dia %(day)s de %(month_name)s às %(time)s"
+"Meeting minute","Ata da reunião"
+"Meeting of %(day)s","Reunião de %(day)s"
+"No minute for this meeting yet","Sem ata para esse reunião por enquanto"
