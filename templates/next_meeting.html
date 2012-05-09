@@ -1,6 +1,6 @@
 {% if next_meeting is None %}
-    <p class="no_meeting">{{ _("Our ninja iguanas are trying to set the next meeting's date. Wait a few days.") }}</p>
     <img src="{{ static_url("images/ninja_iguana.png") }}" alt="{{ _("Ninja iguana") }}" class="ninja_iguana">
+    <p class="no_meeting">{{ _("Our ninja iguanas are trying to set the next meeting's date. Wait a few days.") }}</p>
 {% else %}
     <h1>{{ _("Next meeting") }}:</h1>
     <p>{{ locale.format_date(next_meeting.day) }}</p>

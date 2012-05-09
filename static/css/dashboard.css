@@ -19,16 +19,9 @@ section {
     font-size: 200%;
 }
 
-.next_meeting p.no_meeting {
-    float: left;
-    width: 60%;
-}
-
 .next_meeting .ninja_iguana {
     float: right;
-    position: absolute;
-    bottom: 5%;
-    right: 5%;
+    width: 25%;
 }
 
 .next_meeting, .past_meetings {
