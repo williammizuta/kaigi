@@ -10,4 +10,6 @@ class DashboardHandler(BaseHandler):
 
     @decorators.user.approved
     def get(self):
-        self.render('dashboard.html', next_meeting = self.meeting_dao.next())
+        self.render('dashboard.html',
+                next_meeting = self.meeting_dao.next(),
+                previous_meetings = self.meeting_dao.previous_meetings())

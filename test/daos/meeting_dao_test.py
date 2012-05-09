@@ -2,6 +2,7 @@ from google.appengine.ext import testbed
 import datetime
 from daos.meeting_dao import MeetingDAO
 from models.meeting import Meeting
+from nose.tools import eq_
 
 class meeting_dao_test:
     def setup(self):
@@ -11,6 +12,7 @@ class meeting_dao_test:
         self.meeting_dao = MeetingDAO()
 
         self.today = datetime.datetime.now()
+        self.past_week = self.today - datetime.timedelta(days = 7)
         self.yesterday = self.today - datetime.timedelta(days = 1)
         self.next_hour = self.today + datetime.timedelta(hours = 1)
         self.tomorrow = self.today + datetime.timedelta(days = 1)
@@ -40,3 +42,19 @@ class meeting_dao_test:
         self.meeting_dao.insert(another_meeting)
 
         assert self.meeting_dao.next() == next_meeting
+
+    def should_bring_all_the_past_meetings(self):
+        first_meeting = Meeting(day = self.past_week)
+        second_meeting = Meeting(day = self.yesterday)
+        next_meeting = Meeting(day = self.next_hour)
+        another_meeting = Meeting(day = self.tomorrow)
+
+        self.meeting_dao.insert(first_meeting)
+        self.meeting_dao.insert(second_meeting)
+        self.meeting_dao.insert(next_meeting)
+        self.meeting_dao.insert(another_meeting)
+
+        past_meetings = [first_meeting, second_meeting]
+        result = [m for m in self.meeting_dao.previous_meetings()]
+
+        eq_(past_meetings, result)

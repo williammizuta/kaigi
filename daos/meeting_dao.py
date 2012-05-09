@@ -9,7 +9,13 @@ class MeetingDAO:
         Meeting.put(meeting)
 
     def next(self):
-    	meetings = Meeting.all()
-    	meetings.filter("day >=", datetime.now())
-    	meetings.order("day")
-    	return meetings.get()
+        meetings = Meeting.all()
+        meetings.filter("day >=", datetime.now())
+        meetings.order("day")
+        return meetings.get()
+
+    def previous_meetings(self):
+        meetings = Meeting.all()
+        meetings.filter("day <", datetime.now())
+        meetings.order("day")
+        return meetings
