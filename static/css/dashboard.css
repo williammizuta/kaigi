@@ -15,6 +15,10 @@ section {
     position: absolute;
 }
 
+li a {
+    font-size: 125%;
+}
+
 .next_meeting p {
     font-size: 200%;
 }
@@ -35,12 +39,24 @@ section {
     border-bottom: none;
 }
 
+.past_meeting {
+    text-decoration: none;
+    float: left;
+}
+
+.past_meeting:after {
+    vertical-align: center;
+    content: url('/static/images/right_arrow.png');
+}
+
 .meeting_notes {
     border: none;
     left: 50%;
     height: 100%;
+    vertical-align: center;
 }
 
-.without_minute:after {
-    content: "*";
+.past_meeting.without_minute:after {
+    vertical-align: center;
+    content: "* " url('/static/images/right_arrow.png');
 }
