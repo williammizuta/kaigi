@@ -40,3 +40,7 @@ section {
     left: 50%;
     height: 100%;
 }
+
+.without_minute:after {
+    content: "*";
+}
