@@ -3,7 +3,8 @@ from daos.meeting_dao import MeetingDAO
 from daos.user_dao import UserDAO
 from models.meeting import Meeting
 from datetime import datetime
-from mockito import mock, when, verify, any
+from mockito import mock, when, verify
+
 
 class meetings_handler_test:
 

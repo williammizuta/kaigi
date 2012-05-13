@@ -1,8 +1,7 @@
-import tornado.web
-
 from google.appengine.api import mail
 from handlers.base import BaseHandler
 from decorators.user import admin
+
 
 class ApprovalsHandler(BaseHandler):
     def initialize(self, user_dao):

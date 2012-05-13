@@ -1,7 +1,6 @@
 import functools
 import tornado.web
 
-from daos.user_dao import UserDAO
 
 def approved(method):
     @tornado.web.authenticated
@@ -15,6 +14,7 @@ def approved(method):
 
         return method(self, *args, **kargs)
     return wrapper
+
 
 def admin(method):
     @tornado.web.authenticated

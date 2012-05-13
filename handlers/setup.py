@@ -1,10 +1,9 @@
-from google.appengine.ext import db
-
 import tornado.web
 
 from handlers.base import BaseHandler
 from models.kaigi import Kaigi
 import forms.kaigi
+
 
 class SetupHandler(BaseHandler):
     def initialize(self, user_dao, kaigi_dao):

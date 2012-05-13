@@ -4,6 +4,7 @@ from models.meeting import Meeting
 import forms.meeting
 import datetime
 
+
 class new_meeting_handler_test:
 
     def setup(self):
@@ -29,13 +30,13 @@ class new_meeting_handler_test:
         try:
             self.handler.post()
             raise AssertionError("Did not check XSRF cookie!")
-        except NotImplementedError, e:
-            pass # success
+        except NotImplementedError:
+            pass  # success
 
     def should_save_a_new_meeting_and_redirect_to_dashboard_if_form_is_valid(self):
         when(self.handler).check_xsrf_cookie().thenReturn(None)
         when(self.form).validate().thenReturn(True)
-        when(self.form).get_data().thenReturn({ 'day': datetime.datetime.today() })
+        when(self.form).get_data().thenReturn({'day': datetime.datetime.today()})
 
         self.handler.post()
 

@@ -1,7 +1,7 @@
 from google.appengine.ext import testbed
 from daos.user_dao import UserDAO
 from google.appengine.api import users
-from models.user import User
+
 
 class user_dao_test:
     def setup(self):

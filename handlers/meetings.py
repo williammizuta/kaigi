@@ -1,7 +1,6 @@
-import tornado.web
-
 from handlers.base import BaseHandler
 import decorators.user
+
 
 class MeetingsHandler(BaseHandler):
     def initialize(self, user_dao, meeting_dao):

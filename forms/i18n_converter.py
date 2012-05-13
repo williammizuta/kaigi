@@ -3,11 +3,14 @@ from wtforms import validators, fields as f
 
 from custom_fields import HTML5DateTimeField, TagListField
 
+
 def convert_DateTimeProperty_with_html5(model, prop, kwargs):
     return HTML5DateTimeField(**kwargs)
 
+
 def convert_ListProperty(model, prop, kwargs):
     return TagListField(**kwargs)
+
 
 class I18nConverter(ModelConverter):
     def __init__(self, locale_obj):
@@ -37,4 +40,3 @@ class I18nConverter(ModelConverter):
             converter = self.converters.get(prop_type_name, None)
             if converter is not None:
                 return converter(model, prop, kwargs)
-

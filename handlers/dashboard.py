@@ -1,7 +1,6 @@
-import tornado.web
-
 from handlers.base import BaseHandler
 import decorators.user
+
 
 class DashboardHandler(BaseHandler):
     def initialize(self, user_dao, meeting_dao):
@@ -11,5 +10,5 @@ class DashboardHandler(BaseHandler):
     @decorators.user.approved
     def get(self):
         self.render('dashboard.html',
-                next_meeting = self.meeting_dao.next(),
-                previous_meetings = self.meeting_dao.previous_meetings())
+                next_meeting=self.meeting_dao.next(),
+                previous_meetings=self.meeting_dao.previous_meetings())

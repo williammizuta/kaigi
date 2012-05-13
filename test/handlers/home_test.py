@@ -1,6 +1,7 @@
 from handlers.home import HomeHandler
 from daos.user_dao import UserDAO
-from mockito import mock, when, verify, any
+from mockito import mock, when, verify
+
 
 class home_handler_test:
 

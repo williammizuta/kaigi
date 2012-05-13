@@ -3,6 +3,7 @@ from google.appengine.api import mail
 
 from handlers.base import BaseHandler
 
+
 class PendingHandler(BaseHandler):
     def initialize(self, user_dao):
         self.user_dao = user_dao

@@ -2,6 +2,7 @@ from google.appengine.ext import db
 from datetime import datetime
 from models.meeting import Meeting
 
+
 class MeetingDAO:
     def all(self):
         return Meeting.all()

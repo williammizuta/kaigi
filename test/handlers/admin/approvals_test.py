@@ -2,7 +2,8 @@ from handlers.admin.approvals import ApprovalsHandler
 from daos.user_dao import UserDAO
 from models.user import User
 from google.appengine.api import users, mail
-from mockito import mock, when, verify, any
+from mockito import mock, when, verify
+
 
 class approvals_handler_test:
 

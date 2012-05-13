@@ -1,6 +1,5 @@
-import tornado.web
-
 from handlers.base import BaseHandler
+
 
 class HomeHandler(BaseHandler):
     def initialize(self, user_dao):

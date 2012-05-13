@@ -2,6 +2,7 @@ from wtforms.widgets import Input
 from wtforms import Field, DateTimeField, widgets
 from google.appengine.ext import db
 
+
 class TagListField(Field):
     widget = widgets.TextInput()
 
@@ -20,8 +21,10 @@ class TagListField(Field):
         else:
             self.data = []
 
+
 class DateTimeInput(Input):
     input_type = 'datetime-local'
+
 
 class HTML5DateTimeField(DateTimeField):
     widget = DateTimeInput()

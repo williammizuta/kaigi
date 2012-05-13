@@ -1,8 +1,9 @@
 from daos.user_dao import UserDAO
 from google.appengine.api import users
-from mockito import mock, when, verify, any
+from mockito import mock, when, verify
 from decorators.user import *
 from models.user import User
+
 
 class user_approved_test:
 
@@ -67,6 +68,7 @@ class user_approved_test:
         self.handler.method_for_admins()
 
         assert self.handler.called == True
+
 
 class mock_handler:
     def __init__(self, current_user, user_dao):

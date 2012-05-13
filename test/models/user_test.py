@@ -1,6 +1,7 @@
 from models.user import User
 from google.appengine.api import users
 
+
 class user_test:
     def should_verify_if_an_user_is_approved_or_not(self):
         google_user = users.User(email='test@gmail.com')

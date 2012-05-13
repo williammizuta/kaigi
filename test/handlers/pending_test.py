@@ -1,7 +1,7 @@
 from handlers.pending import PendingHandler
-from models.user import User
-from mockito import mock, when, verify, any
+from mockito import mock, when, verify
 from google.appengine.api import mail
+
 
 class pending_handler_test:
 
@@ -54,8 +54,8 @@ class pending_handler_test:
         try:
             self.handler.post()
             raise AssertionError("Did not check XSRF cookie!")
-        except NotImplementedError, e:
-            pass # success
+        except NotImplementedError:
+            pass  # success
 
     def should_remove_current_user_from_database_and_redirect_to_home(self):
         when(self.handler).check_xsrf_cookie().thenReturn(None)

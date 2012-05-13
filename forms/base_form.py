@@ -3,6 +3,7 @@ from wtforms.validators import *
 
 from django.utils.datastructures import MultiValueDict
 
+
 class TornadoWTFTranslator:
     def __init__(self, locale_obj):
         self.locale_obj = locale_obj

@@ -3,6 +3,7 @@ from mockito import mock, when, verify, any
 from models.kaigi import Kaigi
 import forms.kaigi
 
+
 class setup_handler_test:
 
     def setup(self):
@@ -39,13 +40,13 @@ class setup_handler_test:
         try:
             self.handler.post()
             raise AssertionError("Did not check XSRF cookie!")
-        except NotImplementedError, e:
-            pass # success
+        except NotImplementedError:
+            pass  # success
 
     def should_save_a_new_kaigi_and_the_current_user_as_admin_if_form_is_valid(self):
         when(self.handler).check_xsrf_cookie().thenReturn(None)
         when(self.form).validate().thenReturn(True)
-        when(self.form).get_data().thenReturn({ 'name': 'test' })
+        when(self.form).get_data().thenReturn({'name': 'test'})
 
         self.handler.post()
 
